@@ -16,5 +16,11 @@ RUN apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
                         libgdal-dev libudunits2-dev libmagick++-dev \
                         libboost-all-dev libtbb2-dev cmake jags
 
+RUN echo "LC_TIME=en_US.UTF-8" >> /etc/environment
+RUN echo "LC_MESSAGES=en_US.UTF-8" >> /etc/environment
+RUN echo "LC_MONETARY=en_US.UTF-8" >> /etc/environment
+RUN echo "LC_PAPER=en_US.UTF-8" >> /etc/environment
+RUN echo "LC_MEASUREMENT=en_US.UTF-8" >> /etc/environment
+
 ENV LC_CTYPE="en_US.UTF-8"
 ENV CRANCACHE_DIR "/scratch/work/johnsoa2/crancache"
