@@ -21,6 +21,7 @@ RUN apt-get install -y libgsl-dev libzmq3-dev libgmp-dev
 RUN apt-get install -y libmpfr-dev
 RUN apt-get install -y cargo
 RUN apt-get install -y wget curl
+RUN apt-get install -y gcc-multilib
 
 RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
 RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
