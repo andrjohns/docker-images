@@ -25,6 +25,7 @@ RUN apt-get install -y wget curl
 RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
 RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
     cd OpenBUGS-3.2.3 && \
+    ./configure && \
     make && \
     make install
 
