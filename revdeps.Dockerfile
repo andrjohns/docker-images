@@ -19,12 +19,14 @@ RUN apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
 RUN apt-get install -y libharfbuzz-dev libfribidi-dev
 RUN apt-get install -y libgsl-dev libzmq3-dev libgmp-dev
 RUN apt-get install -y libmpfr-dev
+RUN apt-get install -y cargo
 
-RUN echo "LC_TIME=en_US.UTF-8" >> /etc/environment
-RUN echo "LC_MESSAGES=en_US.UTF-8" >> /etc/environment
-RUN echo "LC_MONETARY=en_US.UTF-8" >> /etc/environment
-RUN echo "LC_PAPER=en_US.UTF-8" >> /etc/environment
-RUN echo "LC_MEASUREMENT=en_US.UTF-8" >> /etc/environment
+RUN curl https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz \
+        -o OpenBUGS-3.2.3.tar.gz
+RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
+    cd OpenBUGS-3.2.3 && \
+    make && \
+    make install
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV CRANCACHE_DIR "/scratch/work/johnsoa2/crancache"
