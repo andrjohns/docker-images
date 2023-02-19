@@ -17,6 +17,7 @@ RUN apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
                         libboost-all-dev libtbb2-dev cmake jags
 
 RUN apt-get install -y libharfbuzz-dev libfribidi-dev
+RUN apt-get install -y libgsl-dev
 
 RUN echo "LC_TIME=en_US.UTF-8" >> /etc/environment
 RUN echo "LC_MESSAGES=en_US.UTF-8" >> /etc/environment
