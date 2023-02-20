@@ -32,4 +32,8 @@ RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LC_TIME="en_US.UTF-8"
+ENV LC_MESSAGES="en_US.UTF-8"
+ENV LC_MONETARY="en_US.UTF-8"
+ENV LC_PAPER="en_US.UTF-8"
+ENV LC_MEASUREMENT="en_US.UTF-8"
 ENV CRANCACHE_DIR "/scratch/work/johnsoa2/crancache"
