@@ -10,7 +10,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
 RUN locale-gen en_US.UTF-8
 
-RUN apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
+RUN apt-get update &&  apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
                         libssl-dev libgit2-dev libxml2-dev git \
                         default-jre default-jdk libfftw3-dev \
                         libgdal-dev libudunits2-dev libmagick++-dev \
