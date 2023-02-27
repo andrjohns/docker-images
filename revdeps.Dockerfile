@@ -14,13 +14,12 @@ RUN apt-get install -y r-base-dev libcurl4-openssl-dev libssh-dev \
                         libssl-dev libgit2-dev libxml2-dev git \
                         default-jre default-jdk libfftw3-dev \
                         libgdal-dev libudunits2-dev libmagick++-dev \
-                        libboost-all-dev libtbb2-dev cmake jags
-
-RUN apt-get install -y libharfbuzz-dev libfribidi-dev
-RUN apt-get install -y libgsl-dev libzmq3-dev libgmp-dev
-RUN apt-get install -y libmpfr-dev
-RUN apt-get install -y cargo
-RUN apt-get install -y wget curl
+                        libboost-all-dev libtbb2-dev cmake jags \
+                        libharfbuzz-dev libfribidi-dev \
+                        libgsl-dev libzmq3-dev libgmp-dev \
+                        libmpfr-dev cargo wget curl p7zip-full gettext \
+                        autopoint bison flex gperf intltool lzip \
+                        python3-mako ruby libtool-bin python-is-python3
 RUN apt-get install -y gcc-multilib
 
 RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
