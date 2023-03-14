@@ -29,9 +29,18 @@ jobs:
 
     - uses: docker/build-push-action@v4
       with:
-        platforms: linux/amd64, linux/arm64
+        platforms: linux/amd64
         file: revdeps.Dockerfile
         push: true
         tags: andrjohns/revdeps
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - uses: docker/build-push-action@v4
+      with:
+        platforms: linux/amd64
+        file: stan_triton.Dockerfile
+        push: true
+        tags: andrjohns/stan-triton
         cache-from: type=gha
         cache-to: type=gha,mode=max
