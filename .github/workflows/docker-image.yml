@@ -29,6 +29,7 @@ jobs:
           files: |
             *.Dockerfile
           write_output_files: true
+          json: "true"
 
       - uses: actions/upload-artifact@v3
         with:

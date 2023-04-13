@@ -46,3 +46,5 @@ RUN echo "R_LIBS_USER=/scratch/cs/bayes_ave/R/library" >> .Renviron
 
 # Make directory accessible and executable by all users
 RUN sudo chmod -R 777 /home/stan_triton
+
+RUN echo dummy
