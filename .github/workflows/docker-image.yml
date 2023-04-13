@@ -15,8 +15,6 @@ on:
 jobs:
   get-changed-dockerfiles:
     runs-on: ubuntu-latest
-    outputs:
-      dockerfiles: ${{ steps.changed-files.all_changed_files }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,14 +26,21 @@ jobs:
         with:
           files: |
             *.Dockerfile
-          json: "true"
+        with:
+          json: true
+          json_raw_format: true
+
+
+    outputs:
+      matrix: ${{ steps.changed-files.all_changed_files }}
 
   build-and-push-images:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.get-changed-dockerfiles.outputs.dockerfiles)}}
+    if: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
     needs:
       - get-changed-dockerfiles
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.get-changed-dockerfiles.outputs.matrix)}}
     steps:
     - uses: actions/checkout@v3
 
