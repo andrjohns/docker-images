@@ -42,6 +42,10 @@ jobs:
               "stan_triton.Dockerfile" : {
                 tag: "andrjohns/stan_triton" ,
                 build_args : ""
+              },
+              "nested/nested.Dockerfile" : {
+                tag: "andrjohns/nested" ,
+                build_args : ""
               }
             };
             var dockerfiles = ${{ steps.changed-files.outputs.all_changed_files }};
