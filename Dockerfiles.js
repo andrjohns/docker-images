@@ -9,6 +9,18 @@ dockerfile_specs = {
   },
   "nested/nested.Dockerfile" : {
     tag: "andrjohns/nested"
+  },
+  "nest1/nest2/Dockerfile" : {
+    tag: "andrjohns/nest12"
+  },
+  "nest1/nest2/Dockerfile-gpu" : {
+    tag: "andrjohns/nest12gpu"
+  },
+  "nest1/nest2/Dockerfile-gpu-mold" : {
+    tag: "andrjohns/nest12gpumold"
+  },
+  "Dockerfile-gpu-mold" : {
+    tag: "andrjohns/gpumold"
   }
 };
 
