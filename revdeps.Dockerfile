@@ -38,3 +38,8 @@ ENV LC_PAPER="en_US.UTF-8"
 ENV LC_MEASUREMENT="en_US.UTF-8"
 ENV LC_COLLATE="en_US.UTF-8"
 ENV LC_ALL="en_US.UTF-8"
+
+RUN Rscript -e " \
+  install.packages(c(\"rstan\",\"rcmdcheck\",\"devtools\",\"V8\"), \
+                    dependencies = TRUE) \
+"

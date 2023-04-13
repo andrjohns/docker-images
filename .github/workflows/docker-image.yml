@@ -9,12 +9,35 @@ on:
   pull_request:
     branches: [ "main" ]
     paths-ignore:
-      - '**.Dockerfile'
+      #- '**.Dockerfile'
       - '**.yml'
 
 jobs:
-  build-and-push-image:
+  get-changed-dockerfiles:
     runs-on: ubuntu-latest
+    outputs:
+      dockerfiles: ${{ steps.changed-files.all_changed_files }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            **/*.Dockerfile
+          dir_names: true
+          separator: ","
+          json: "true"
+
+  build-and-push-images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.get-changed-dockerfiles.outputs.dockerfiles)}}
+    needs:
+      - get-changed-dockerfiles
     steps:
     - uses: actions/checkout@v3
 
@@ -30,17 +53,8 @@ jobs:
     - uses: docker/build-push-action@v4
       with:
         platforms: linux/amd64
-        file: revdeps.Dockerfile
+        file: ${{ matrix.file }}
         push: true
         tags: andrjohns/revdeps
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-
-    - uses: docker/build-push-action@v4
-      with:
-        platforms: linux/amd64
-        file: stan_triton.Dockerfile
-        push: true
-        tags: andrjohns/stan-triton
         cache-from: type=gha
         cache-to: type=gha,mode=max
