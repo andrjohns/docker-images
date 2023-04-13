@@ -28,13 +28,7 @@ jobs:
         with:
           files: |
             *.Dockerfile
-          write_output_files: true
           json: "true"
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: .github/outputs/all_changed_files.txt
 
   build-and-push-images:
     runs-on: ubuntu-latest
