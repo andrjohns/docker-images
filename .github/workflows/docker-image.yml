@@ -30,6 +30,8 @@ jobs:
             **/*.Dockerfile
           dir_names: true
           separator: ","
+          write_output_files: true
+
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
