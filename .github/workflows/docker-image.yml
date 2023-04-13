@@ -26,6 +26,7 @@ jobs:
         with:
           files: |
             *.Dockerfile
+            **/*.Dockerfile
           json: true
           json_raw_format: true
 
