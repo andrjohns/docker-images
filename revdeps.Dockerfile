@@ -45,3 +45,6 @@ RUN Rscript -e " \
 "
 
 
+RUN Rscript -e " \
+  session.info() \
+"
