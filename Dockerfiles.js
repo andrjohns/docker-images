@@ -5,14 +5,10 @@ dockerfile_specs = {
     platforms : "linux/amd64,linux/arm64"
   },
   "stan_triton.Dockerfile" : {
-    tag: "andrjohns/stan_triton" ,
-    build_args : "",
-    platforms : "linux/amd64"
+    tag: "andrjohns/stan_triton"
   },
   "nested/nested.Dockerfile" : {
-    tag: "andrjohns/nested" ,
-    build_args : "",
-    platforms : "linux/amd64"
+    tag: "andrjohns/nested"
   }
 };
 
@@ -22,7 +18,8 @@ const build_args_matrix = function(dockerfile_list) {
                                       return {
                                         file : dockerfile,
                                         tag : dockerfile_specs[dockerfile].tag,
-                                        build_args : dockerfile_specs[dockerfile].build_args
+                                        build_args : dockerfile_specs[dockerfile].build_args,
+                                        platforms : dockerfile_specs[dockerfile].platforms
                                       }
                                     })
   }
