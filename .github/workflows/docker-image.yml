@@ -27,6 +27,7 @@ jobs:
         uses: tj-actions/changed-files@v35
         with:
           files: |
+            **.Dockerfile
             **/*.Dockerfile
           dir_names: true
           separator: ","
