@@ -36,7 +36,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const make_args_matrix = require(`{process.env.GITHUB_WORKSPACE}/Dockerfiles.js`)
+            const make_args_matrix = require(`${process.env.GITHUB_WORKSPACE}/Dockerfiles.js`)
             return make_args_matrix(${{ steps.changed-files.outputs.all_changed_files }});
 
     outputs:
