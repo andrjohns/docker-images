@@ -34,7 +34,7 @@ jobs:
       matrix: ${{ steps.changed-files.all_changed_files }}
 
   build-and-push-images:
-    if: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
+    if: ${{ fromJson(needs.get-changed-dockerfiles.outputs.matrix) }}
     needs:
       - get-changed-dockerfiles
     runs-on: ubuntu-latest
