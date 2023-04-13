@@ -31,7 +31,7 @@ jobs:
 
 
     outputs:
-      matrix: ${{ steps.changed-files.all_changed_files }}
+      matrix: ${{ steps.changed-files.outputs.all_changed_files }}
 
   build-and-push-images:
     if: ${{ fromJson(needs.get-changed-dockerfiles.outputs.matrix) }}
