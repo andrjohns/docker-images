@@ -7,7 +7,7 @@ dockerfile_specs = {
   "stan_triton.Dockerfile" : {
     tag: "andrjohns/stan_triton"
   },
-  "nested/nested.Dockerfile" : {
+  "nested/Dockerfile" : {
     tag: "andrjohns/nested"
   },
   "nest1/nest2/Dockerfile" : {
