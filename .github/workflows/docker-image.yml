@@ -31,6 +31,12 @@ jobs:
           dir_names: true
           separator: ","
           json: "true"
+          write_output_files: true
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: .github/outputs/added_files.txt
 
   build-and-push-images:
     runs-on: ubuntu-latest
