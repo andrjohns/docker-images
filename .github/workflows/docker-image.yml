@@ -44,7 +44,7 @@ jobs:
                 build_args : ""
               }
             };
-            var dockerfiles = steps.changed-files.outputs.all_changed_files;
+            var dockerfiles = ${{ steps.changed-files.outputs.all_changed_files }};
             return dockerfiles.map(dockerfile => {
               return {
                 file : dockerfile,
