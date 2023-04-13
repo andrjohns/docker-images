@@ -56,7 +56,7 @@ jobs:
     - uses: docker/build-push-action@v4
       with:
         platforms: linux/amd64
-        file: ${{ matrix.file }}
+        file: ${{ matrix.files }}
         push: true
         tags: andrjohns/revdeps
         cache-from: type=gha
