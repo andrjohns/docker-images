@@ -28,6 +28,8 @@ jobs:
             *.Dockerfile
             **/*.Dockerfile
             **/Dockerfile*
+          files_ignore: |
+            **/Dockerfile.js
           json: true
           json_raw_format: true
 
