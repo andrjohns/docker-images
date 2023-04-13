@@ -35,37 +35,14 @@ jobs:
         id: generator
         with:
           script: |
-            const args = {
-              "revdeps.Dockerfile" : {
-                tag: "andrjohns/revdeps" ,
-                build_args : ["PUID=990", "PGID=986"]
-              },
-              "stan_triton.Dockerfile" : {
-                tag: "andrjohns/stan_triton" ,
-                build_args : ""
-              },
-              "nested/nested.Dockerfile" : {
-                tag: "andrjohns/nested" ,
-                build_args : ""
-              }
-            };
-            var dockerfiles = ${{ steps.changed-files.outputs.all_changed_files }};
-            var rtn = {
-              "include" : dockerfiles.map(dockerfile => {
-                            return {
-                              file : dockerfile,
-                              tag : args[dockerfile].tag,
-                              build_args : args[dockerfile].build_args
-                            }
-                          })
-            } ;
-            console.log(rtn);
-            return rtn;
+            const make_args_matrix = require(`Dockerfiles.js`)
+            return make_args_matrix(${{ steps.changed-files.outputs.all_changed_files }});
 
     outputs:
       matrix: ${{ steps.generator.outputs.result }}
 
   build-and-push-images:
+    name: Build and Push ${{ matrix.file }}
     if: ${{ fromJson(needs.get-changed-dockerfiles.outputs.matrix) }}
     needs:
       - get-changed-dockerfiles
@@ -87,7 +64,7 @@ jobs:
 
     - uses: docker/build-push-action@v4
       with:
-        platforms: linux/amd64
+        platforms: ${{ matrix.platforms }}
         file: ${{ matrix.file }}
         push: true
         build-args: |-
