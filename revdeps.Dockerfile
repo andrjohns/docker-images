@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:lunar
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
@@ -14,7 +14,7 @@ RUN apt-get update &&  apt-get install -y r-base-dev libcurl4-openssl-dev libssh
                         libssl-dev libgit2-dev libxml2-dev git \
                         default-jre default-jdk libfftw3-dev \
                         libgdal-dev libudunits2-dev libmagick++-dev \
-                        libboost-all-dev libtbb2-dev cmake jags \
+                        libboost-all-dev libtbb-dev cmake jags \
                         libharfbuzz-dev libfribidi-dev \
                         libgsl-dev libzmq3-dev libgmp-dev \
                         libmpfr-dev cargo wget curl p7zip-full gettext \
@@ -40,11 +40,12 @@ ENV LC_COLLATE="en_US.UTF-8"
 ENV LC_ALL="en_US.UTF-8"
 
 RUN Rscript -e " \
-  install.packages(c(\"rstan\",\"rcmdcheck\",\"devtools\",\"V8\"), \
-                    dependencies = TRUE) \
+  install.packages(c(\"remotes\")); \
+  remotes::install_github(\"r-lib/revdepcheck\"); \
 "
-
 
 RUN Rscript -e " \
-  session.info() \
+  crancache::install_packages(\"rstan\", dependencies = TRUE); \
 "
+
+RUN apt-get install -y qpdf pandoc
