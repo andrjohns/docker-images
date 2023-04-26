@@ -39,15 +39,4 @@ ENV LC_MEASUREMENT="en_US.UTF-8"
 ENV LC_COLLATE="en_US.UTF-8"
 ENV LC_ALL="en_US.UTF-8"
 
-RUN Rscript -e " \
-  Sys.setenv(MAKEFLAGS=paste0(\"-j\", parallel::detectCores()));  \
-  install.packages(c(\"remotes\")); \
-  remotes::install_github(\"r-lib/revdepcheck\"); \
-"
-
-RUN Rscript -e " \
-  Sys.setenv(MAKEFLAGS=paste0(\"-j\", parallel::detectCores()));  \
-  crancache::install_packages(\"rstan\", dependencies = TRUE); \
-"
-
 RUN apt-get install -y qpdf pandoc
