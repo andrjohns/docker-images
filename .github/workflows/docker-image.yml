@@ -67,6 +67,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Download build files
+      if: ${{ matrix.tag }} == 'andrjohns/sem'
       run: wget ${{ secrets.MPLUS_DOWNLOAD_URL }}
 
     - uses: docker/build-push-action@v4
@@ -80,3 +81,4 @@ jobs:
         tags: ${{ matrix.tag }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
+        context: "{{defaultContext}}:mysubdir"
