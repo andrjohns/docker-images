@@ -3,8 +3,8 @@ dockerfile_specs = {
     tag: "andrjohns/revdeps",
     platforms : "linux/amd64,linux/arm64"
   },
-  "stan_triton.Dockerfile" : {
-    tag: "andrjohns/stan_triton",
+  "stan-triton.Dockerfile" : {
+    tag: "andrjohns/stan-triton",
     platforms : "linux/amd64"
   },
   "sem.Dockerfile" : {
