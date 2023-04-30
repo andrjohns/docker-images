@@ -45,7 +45,6 @@ ENV R_MAKEVARS_USER /home/stan_triton/.R/Makevars
 ENV R_ENVIRON_USER /home/stan_triton/.Renviron
 ENV CMDSTAN /scratch/cs/bayes_ave/.cmdstan-triton/
 
-RUN useradd -r -u 1001 -g stan_triton stan_triton
 USER stan_triton
 WORKDIR /home/stan_triton
 
