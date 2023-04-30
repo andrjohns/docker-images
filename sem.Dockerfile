@@ -1,20 +1,10 @@
-FROM ubuntu:lunar
+FROM debian:sid-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
-RUN apt-get update
-RUN apt-get install -y apt-utils tzdata locales sudo
-
-RUN if [ $(uname -p) = "aarch64" ]; then \
-      apt-get install -y qemu-user binfmt-support && \
-      dpkg --add-architecture amd64 && \
-      sed 's/^deb http/deb [arch=arm64] http/' -i '/etc/apt/sources.list' && \
-      echo "deb [arch=amd64] http://security.ubuntu.com/ubuntu/ lunar-security  main restricted universe multiverse" >> /etc/apt/sources.list.d/amd64.list && \
-      echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ lunar         main restricted universe multiverse" >> /etc/apt/sources.list.d/amd64.list && \
-      echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ lunar-updates   main restricted universe multiverse" >> /etc/apt/sources.list.d/amd64.list && \
-      echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ lunar-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/amd64.list && \
-      apt-get update && apt-get install -y libc6:amd64; \
-    fi
+RUN dpkg --add-architecture amd64
+RUN apt-get update && \
+  apt-get install -y libc6:amd64 qemu-user binfmt-support apt-utils tzdata locales
 
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_AU.UTF-8" >> /etc/environment
