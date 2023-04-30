@@ -45,8 +45,10 @@ ENV R_MAKEVARS_USER /home/stan_triton/.R/Makevars
 ENV R_ENVIRON_USER /home/stan_triton/.Renviron
 ENV CMDSTAN /scratch/cs/bayes_ave/.cmdstan-triton/
 
-USER stan_triton
-WORKDIR /home/stan_triton
+RUN useradd -ms /bin/bash stan-triton
+
+USER stan-triton
+WORKDIR /home/stan-triton
 
 RUN mkdir .R
 
@@ -68,5 +70,9 @@ RUN echo " \
 
 RUN echo "R_LIBS_USER=/scratch/cs/bayes_ave/R/library" >> .Renviron
 
+USER root
+
 # Make directory accessible and executable by all users
-RUN sudo chmod -R 777 /home/stan_triton
+RUN chmod -R 777 /home/stan-triton
+
+USER stan-triton
