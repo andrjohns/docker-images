@@ -81,4 +81,4 @@ jobs:
         tags: ${{ matrix.tag }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
-        context: "{{defaultContext}}:mysubdir"
+        context: "{{defaultContext}}"
