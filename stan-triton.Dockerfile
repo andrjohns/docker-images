@@ -41,8 +41,8 @@ ENV LC_ALL="en_GB.UTF-8"
 
 ENV MKL_INTERFACE_LAYER GNU,LP64
 ENV MKL_THREADING_LAYER GNU
-ENV R_MAKEVARS_USER /home/stan_triton/.R/Makevars
-ENV R_ENVIRON_USER /home/stan_triton/.Renviron
+ENV R_MAKEVARS_USER /home/stan-triton/.R/Makevars
+ENV R_ENVIRON_USER /home/stan-triton/.Renviron
 ENV CMDSTAN /scratch/cs/bayes_ave/.cmdstan-triton/
 
 RUN useradd -ms /bin/bash stan-triton
