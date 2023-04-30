@@ -1,8 +1,5 @@
 FROM ubuntu:lunar
 
-RUN --mount=type=secret,id=mplus_url \
-  cat /run/secrets/mplus_url
-
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 RUN apt-get update
