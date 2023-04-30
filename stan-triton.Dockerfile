@@ -15,6 +15,22 @@ RUN apt-get update && apt-get install -y libssh-dev libssl-dev libgit2-dev
 RUN apt-get update && apt-get install -y libv8-dev git cmake qpdf pandoc
 RUN apt-get update && apt-get install -y libxml2-dev clinfo nvidia-cuda-toolkit
 RUN apt-get update && apt-get install -y nvidia-cuda-toolkit-gcc libfontconfig1-dev
+RUN apt-get update && apt-get install -y default-jre default-jdk libfftw3-dev
+RUN apt-get update && apt-get install -y libgdal-dev libudunits2-dev libmagick++-dev
+RUN apt-get update && apt-get install -y libboost-all-dev libtbb-dev jags
+RUN apt-get update && apt-get install -y libharfbuzz-dev libfribidi-dev
+RUN apt-get update && apt-get install -y libgsl-dev libzmq3-dev libgmp-dev
+RUN apt-get update && apt-get install -y libmpfr-dev cargo wget curl p7zip-full
+RUN apt-get update && apt-get install -y autopoint bison flex gperf intltool lzip
+RUN apt-get update && apt-get install -y python3-mako ruby libtool-bin python-is-python3
+RUN apt-get update && apt-get install -y automake perl libtool gettext gcc-i686-linux-gnu
+
+RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
+RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
+    cd OpenBUGS-3.2.3 && \
+    ./configure --host=i686-linux-gnu && \
+    make && \
+    make install
 
 # Specify that the MKL should provide the Matrix algebra libraries for the system
 RUN update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so.3 \
