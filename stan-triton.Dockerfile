@@ -8,12 +8,13 @@ ENV TZ=Etc/UTC
 RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
               /etc/apt/sources.list.d/debian.sources
 
-RUN apt-get update && apt-get install locales locales-all intel-mkl-full \
-                                      r-base-dev nvidia-tesla-510-driver \
-                                      sudo tzdata libcurl4-openssl-dev \
-                                      libssh-dev libssl-dev libgit2-dev \
-                                      libv8-dev git cmake qpdf pandoc \
-                                      libxml2-dev clinfo nvidia-cuda-toolkit nvidia-cuda-toolkit-gcc -y
+RUN apt-get update && apt-get install -y locales locales-all intel-mkl-full
+RUN apt-get update && apt-get install -y r-base-dev nvidia-tesla-510-driver
+RUN apt-get update && apt-get install -y sudo tzdata libcurl4-openssl-dev
+RUN apt-get update && apt-get install -y libssh-dev libssl-dev libgit2-dev
+RUN apt-get update && apt-get install -y libv8-dev git cmake qpdf pandoc
+RUN apt-get update && apt-get install -y libxml2-dev clinfo nvidia-cuda-toolkit
+RUN apt-get update && apt-get install -y nvidia-cuda-toolkit-gcc libfontconfig1-dev
 
 # Specify that the MKL should provide the Matrix algebra libraries for the system
 RUN update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so.3 \
