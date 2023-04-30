@@ -6,6 +6,10 @@ dockerfile_specs = {
   "stan_triton.Dockerfile" : {
     tag: "andrjohns/stan_triton",
     platforms : "linux/amd64"
+  },
+  "sem.Dockerfile" : {
+    tag: "andrjohns/sem",
+    platforms : "linux/amd64,linux/arm64"
   }
 };
 

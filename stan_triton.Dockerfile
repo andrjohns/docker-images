@@ -2,12 +2,17 @@ FROM debian:sid-slim
 
 # Defined only while building
 ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
 
 # Add non-free repo to install Intel MKL
-RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' /etc/apt/sources.list.d/debian.sources
+RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
+              /etc/apt/sources.list.d/debian.sources
 
-RUN apt-get update && apt-get install locales locales-all intel-mkl-full r-base-dev nvidia-tesla-510-driver \
-                                      sudo libcurl4-openssl-dev libv8-dev git cmake qpdf pandoc \
+RUN apt-get update && apt-get install locales locales-all intel-mkl-full \
+                                      r-base-dev nvidia-tesla-510-driver \
+                                      sudo tzdata libcurl4-openssl-dev \
+                                      libssh-dev libssl-dev libgit2-dev \
+                                      libv8-dev git cmake qpdf pandoc \
                                       libxml2-dev clinfo nvidia-cuda-toolkit nvidia-cuda-toolkit-gcc -y
 
 # Specify that the MKL should provide the Matrix algebra libraries for the system
@@ -18,6 +23,21 @@ RUN update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so.3 \
 RUN update-alternatives --install /usr/lib/x86_64-linux-gnu/liblapack.so.3 \
                                   liblapack.so.3-x86_64-linux-gnu \
                                   /usr/lib/x86_64-linux-gnu/libmkl_rt.so 150
+
+RUN dpkg-reconfigure locales
+RUN echo "LC_ALL=en_GB.UTF-8" >> /etc/environment
+RUN echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
+RUN echo "LANG=en_GB.UTF-8" > /etc/locale.conf
+RUN locale-gen en_GB.UTF-8
+
+ENV LC_CTYPE="en_GB.UTF-8"
+ENV LC_TIME="en_GB.UTF-8"
+ENV LC_MESSAGES="en_GB.UTF-8"
+ENV LC_MONETARY="en_GB.UTF-8"
+ENV LC_PAPER="en_GB.UTF-8"
+ENV LC_MEASUREMENT="en_GB.UTF-8"
+ENV LC_COLLATE="en_GB.UTF-8"
+ENV LC_ALL="en_GB.UTF-8"
 
 ENV MKL_INTERFACE_LAYER GNU,LP64
 ENV MKL_THREADING_LAYER GNU
@@ -51,4 +71,3 @@ RUN echo "R_LIBS_USER=/scratch/cs/bayes_ave/R/library" >> .Renviron
 
 # Make directory accessible and executable by all users
 RUN sudo chmod -R 777 /home/stan_triton
-
