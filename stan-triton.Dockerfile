@@ -9,12 +9,12 @@ RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
               /etc/apt/sources.list.d/debian.sources
 
 RUN apt-get update && apt-get install -y locales locales-all intel-mkl-full
-RUN apt-get update && apt-get install -y r-base-dev nvidia-tesla-510-driver
+RUN apt-get update && apt-get install -y r-base-dev nvidia-opencl-dev nvidia-opencl-common
+RUN apt-get update && apt-get install -y nvidia-libopencl1 nvidia-opencl-icd
 RUN apt-get update && apt-get install -y sudo tzdata libcurl4-openssl-dev
 RUN apt-get update && apt-get install -y libssh-dev libssl-dev libgit2-dev
 RUN apt-get update && apt-get install -y libv8-dev git cmake qpdf pandoc
-RUN apt-get update && apt-get install -y libxml2-dev clinfo nvidia-cuda-toolkit
-RUN apt-get update && apt-get install -y nvidia-cuda-toolkit-gcc libfontconfig1-dev
+RUN apt-get update && apt-get install -y libxml2-dev clinfo libfontconfig1-dev
 RUN apt-get update && apt-get install -y default-jre default-jdk libfftw3-dev
 RUN apt-get update && apt-get install -y libgdal-dev libudunits2-dev libmagick++-dev
 RUN apt-get update && apt-get install -y libboost-all-dev libtbb-dev jags
@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y automake perl libtool gettext gcc-i686-
 RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
 RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
     cd OpenBUGS-3.2.3 && \
-    ./configure --host=i686-linux-gnu && \
+    ./configure && \
     make && \
     make install
 
