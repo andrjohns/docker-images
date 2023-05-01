@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y libmpfr-dev cargo wget curl p7zip-full
 RUN apt-get update && apt-get install -y autopoint bison flex gperf intltool lzip
 RUN apt-get update && apt-get install -y python3-mako ruby libtool-bin python-is-python3
 RUN apt-get update && apt-get install -y automake perl libtool gettext gcc-i686-linux-gnu
+RUN apt-get update && apt-get install -y nvidia-cuda-toolkit
 
 RUN wget https://www.mrc-bsu.cam.ac.uk/wp-content/uploads/2018/04/OpenBUGS-3.2.3.tar.gz
 RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
