@@ -89,7 +89,7 @@ RUN echo " \
 RUN echo "R_LIBS_USER=/scratch/work/\${USER}/stan-triton/R/library" >> .Renviron
 RUN echo " \
 pkgdir <- paste0('/scratch/work/',Sys.getenv('USER'),'/stan-triton/R/library'); \
-if (!dir.exists(pkgdir)) { dir.create(pkgdir) }; \
+if (!dir.exists(pkgdir)) { dir.create(pkgdir, recursive = TRUE) }; \
 rm(pkgdir) \
 " >> .Renviron
 
