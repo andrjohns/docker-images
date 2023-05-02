@@ -87,6 +87,11 @@ RUN echo " \
 " >> .R/Makevars
 
 RUN echo "R_LIBS_USER=/scratch/work/\${USER}/stan-triton/R/library" >> .Renviron
+RUN echo " \
+pkgdir <- paste0('/scratch/work/',Sys.getenv('USER'),'/stan-triton/R/library'); \
+if (!dir.exists(pkgdir)) { dir.create(pkgdir) }; \
+rm(pkgdir) \
+" >> .Renviron
 
 USER root
 
