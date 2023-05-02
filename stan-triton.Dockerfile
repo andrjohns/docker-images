@@ -86,7 +86,7 @@ RUN echo " \
               -Wno-deprecated-declarations -Wno-deprecated-builtins -Wno-unused-but-set-variables \n \
 " >> .R/Makevars
 
-RUN echo "R_LIBS_USER=/scratch/cs/bayes_ave/R/library" >> .Renviron
+RUN echo "R_LIBS_USER=/scratch/work/${USER}/stan-triton/R/library" >> .Renviron
 
 USER root
 
