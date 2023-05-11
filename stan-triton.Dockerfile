@@ -4,6 +4,10 @@ FROM debian:sid-slim
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
+# Add non-free repo to install Nvidia OpenCL deps
+RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
+              /etc/apt/sources.list.d/debian.sources
+
 RUN apt-get update && apt-get install -y locales locales-all
 RUN apt-get update && apt-get install -y libopenblas-pthread-dev liblapacke-dev libopenblas64-pthread-dev liblapacke64-dev
 RUN apt-get update && apt-get install -y r-base-dev nvidia-opencl-dev nvidia-opencl-common
