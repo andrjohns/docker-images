@@ -24,5 +24,3 @@ ENV LC_ALL="en_AU.UTF-8"
 COPY ./89_ComboLinux64.bin ./
 RUN bash -x ./89_ComboLinux64.bin -i silent && rm ./89_ComboLinux64.bin
 
-WORKDIR /mplus
-ENTRYPOINT [ "/opt/mplus/8.9/mplus" ]
