@@ -21,6 +21,6 @@ ENV LC_MEASUREMENT="en_AU.UTF-8"
 ENV LC_COLLATE="en_AU.UTF-8"
 ENV LC_ALL="en_AU.UTF-8"
 
-COPY ./89_ComboLinux64.bin ./
-RUN bash -x ./89_ComboLinux64.bin -i silent && rm ./89_ComboLinux64.bin
+COPY ./810_ComboLinux64.bin ./
+RUN bash -x ./810_ComboLinux64.bin -i silent && rm ./810_ComboLinux64.bin
 
