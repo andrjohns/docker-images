@@ -23,4 +23,4 @@ ENV LC_ALL="en_AU.UTF-8"
 
 COPY ./810_ComboLinux64.bin ./
 RUN bash -x ./810_ComboLinux64.bin -i silent && rm ./810_ComboLinux64.bin
-
+RUN ln -s /opt/mplus/8.10/mplus /usr/bin/mplus
