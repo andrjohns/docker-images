@@ -14,6 +14,10 @@ dockerfile_specs = {
   "opencl-triton.Dockerfile" : {
     tag: "andrjohns/opencl-triton",
     platforms : "linux/amd64"
+  },
+  "vulkan-triton.Dockerfile" : {
+    tag: "andrjohns/opencl-triton",
+    platforms : "linux/amd64"
   }
 };
 
