@@ -9,7 +9,6 @@ RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
               /etc/apt/sources.list.d/debian.sources
 
 RUN apt-get update && apt-get install -y nvidia-tesla-driver nvidia-tesla-opencl-icd
-RUN apt-get update && apt-get install -y nvidia-opencl-dev nvidia-libopencl1
 RUN apt-get update && apt-get install -y locales locales-all clinfo
 
 RUN dpkg-reconfigure locales
