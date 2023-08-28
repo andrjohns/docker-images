@@ -11,6 +11,7 @@ RUN gdebi -n amdgpu-install_5.5.50503-1_all.deb
 RUN amdgpu-install -y --usecase=workstation --vulkan=pro --accept-eula --no-32
 
 RUN apt-get update && apt-get install -y locales locales-all
+RUN apt-get update && apt-get install -y clinfo vulkan-tools vulkan-validationlayers-dev
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_AU.UTF-8" >> /etc/environment
 RUN echo "en_AU.UTF-8 UTF-8" >> /etc/locale.gen
