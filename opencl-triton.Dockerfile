@@ -10,6 +10,7 @@ RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
 
 RUN apt-get update && apt-get install -y nvidia-tesla-driver nvidia-tesla-opencl-icd
 RUN apt-get update && apt-get install -y locales locales-all clinfo
+RUN apt-get update && apt-get install -y python-is-python3 git build-essential
 
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_GB.UTF-8" >> /etc/environment
