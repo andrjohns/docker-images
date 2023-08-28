@@ -8,7 +8,7 @@ ENV TZ=Etc/UTC
 RUN sed -i -e's/ main/ main contrib non-free non-free-firmware/g' \
               /etc/apt/sources.list.d/debian.sources
 
-RUN apt-get update && apt-get install -y nvidia-vulkan-icd nvidia-vulkan-common
+RUN apt-get update && apt-get install -y nvidia-tesla-vulkan-icd nvidia-vulkan-common nvidia-tesla-driver
 RUN apt-get update && apt-get install -y vulkan-validationlayers-dev libvulkan-dev
 RUN apt-get update && apt-get install -y locales locales-all vulkan-tools
 
