@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y nvidia-opencl-dev nvidia-opencl-common
 RUN apt-get update && apt-get install -y nvidia-opencl-icd
 RUN apt-get update && apt-get install -y nvidia-vulkan-icd nvidia-vulkan-common
 RUN apt-get update && apt-get install -y nvidia-cuda-toolkit locales locales-all
-RUN apt-get update && apt-get install -y vulkan-utils
+RUN apt-get update && apt-get install -y vulkan-utils clinfo
 
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_GB.UTF-8" >> /etc/environment
