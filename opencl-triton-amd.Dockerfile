@@ -8,7 +8,7 @@ ENV TZ=Etc/UTC
 RUN apt-get update && apt-get install -y wget curl build-essential gdebi-core
 RUN wget https://repo.radeon.com/amdgpu-install/23.10.3/ubuntu/jammy/amdgpu-install_5.5.50503-1_all.deb
 RUN gdebi -n amdgpu-install_5.5.50503-1_all.deb
-RUN amdgpu-install -y --usecase=workstation --vulkan=pro --accept-eula --no-32
+RUN amdgpu-install -y --opencl=rocr --vulkan=pro --accept-eula --no-32
 
 RUN apt-get update && apt-get install -y locales locales-all
 RUN apt-get update && apt-get install -y clinfo vulkan-tools vulkan-validationlayers-dev
