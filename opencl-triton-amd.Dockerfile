@@ -13,6 +13,7 @@ RUN amdgpu-install -y --opencl=rocr --vulkan=pro --accept-eula --no-32
 RUN apt-get update && apt-get install -y locales locales-all
 RUN apt-get update && apt-get install -y vulkan-tools vulkan-validationlayers-dev
 RUN apt-get update && apt-get install -y python-is-python3
+RUN apt-get update && apt-get install -y git build-essential
 
 RUN ln -s /opt/rocm/opencl/bin/clinfo /usr/local/bin/clinfo
 RUN ln -s /opt/rocm/opencl/lib/libOpenCL.so /usr/local/lib/libOpenCL.so
