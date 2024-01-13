@@ -4,6 +4,8 @@ FROM debian:testing-slim
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
+RUN apt-get update && apt-get install -y locales locales-all tzdata
+
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_AU.UTF-8" >> /etc/environment
 RUN echo "en_AU.UTF-8 UTF-8" >> /etc/locale.gen
@@ -18,8 +20,6 @@ ENV LC_PAPER="en_AU.UTF-8"
 ENV LC_MEASUREMENT="en_AU.UTF-8"
 ENV LC_COLLATE="en_AU.UTF-8"
 ENV LC_ALL="en_AU.UTF-8"
-
-RUN apt-get update && apt-get install -y tzdata
 
 RUN apt-get install -y \
       autoconf \

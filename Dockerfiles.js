@@ -24,7 +24,7 @@ dockerfile_specs = {
     platforms : "linux/amd64"
   },
   "rtools-build.Dockerfile" : {
-    tag: "andrjohns/rtools",
+    tag: "andrjohns/rtools-build",
     platforms : "linux/amd64,linux/arm64"
   }
 };
