@@ -1,4 +1,4 @@
-FROM debian:testing-slim
+FROM ubuntu:22.04
 
 # Defined only while building
 ARG DEBIAN_FRONTEND=noninteractive
@@ -20,6 +20,7 @@ ENV LC_PAPER="en_AU.UTF-8"
 ENV LC_MEASUREMENT="en_AU.UTF-8"
 ENV LC_COLLATE="en_AU.UTF-8"
 ENV LC_ALL="en_AU.UTF-8"
+
 
 RUN apt-get install -y \
       autoconf \
