@@ -22,6 +22,10 @@ dockerfile_specs = {
   "vulkan-triton.Dockerfile" : {
     tag: "andrjohns/vulkan-triton",
     platforms : "linux/amd64"
+  },
+  "rtools-build.Dockerfile" : {
+    tag: "andrjohns/rtools",
+    platforms : "linux/amd64,linux/arm64"
   }
 };
 
