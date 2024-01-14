@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM debian:sid-slim
 
 # Defined only while building
 ARG DEBIAN_FRONTEND=noninteractive
@@ -23,55 +23,11 @@ ENV LC_ALL="en_AU.UTF-8"
 
 
 RUN apt-get install -y \
-      autoconf \
-      automake \
-      autopoint \
-      bash \
-      bison \
-      bzip2 \
-      flex \
-      g++ \
-      g++-multilib \
-      gettext \
-      git \
-      gperf \
-      intltool \
-      libc6-dev-i386 \
-      libgdk-pixbuf2.0-dev \
-      libltdl-dev \
-      libgl-dev \
-      libpcre3-dev \
-      libssl-dev \
-      libtool-bin \
-      libxml-parser-perl \
-      lzip \
-      make \
-      openssl \
-      p7zip-full \
-      patch \
-      perl \
-      python3 \
-      python3-distutils \
-      python3-mako \
-      python3-pkg-resources \
-      python3-setuptools \
-      python2 \
-      python-is-python3 \
-      ruby \
-      sed \
-      unzip \
-      wget \
-      xz-utils
-
-# texinfo for binutils
-# sqlite3 for proj
-RUN apt-get install -y texinfo sqlite3 zstd
-    
-# for gnutls
-RUN apt-get install -y gtk-doc-tools
-    
-# for qt6-qtbase
-RUN apt-get install -y libopengl-dev libglu1-mesa-dev
-    
-# for dbus
-RUN apt-get install -y autoconf-archive
+  autoconf automake autopoint bash bison bzip2 flex g++ \
+  g++-multilib-x86-64-linux-gnu gettext git gperf intltool \
+  libgdk-pixbuf2.0-dev libltdl-dev libgl-dev libpcre3-dev libssl-dev \
+  libtool-bin libxml-parser-perl lzip make openssl p7zip-full patch \
+  perl python3 python3-distutils python3-mako python3-pkg-resources \
+  python3-setuptools dh-python python-is-python3 ruby sed unzip wget \
+  xz-utils texinfo sqlite3 zstd gtk-doc-tools libopengl-dev \
+  libglu1-mesa-dev autoconf-archive
