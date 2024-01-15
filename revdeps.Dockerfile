@@ -43,3 +43,4 @@ RUN apt-get install -y qpdf pandoc
 RUN apt-get install -y libnode-dev
 RUN apt-get install -y coinor-symphony coinor-libsymphony-dev
 RUN apt-get install -y nano libpoppler-cpp-dev
+RUN apt-get install -y libxslt1-dev
