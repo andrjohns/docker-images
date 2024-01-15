@@ -40,3 +40,4 @@ RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
     make install
 
 RUN apt-get install -y qpdf pandoc
+RUN apt-get install -y libnode-dev
