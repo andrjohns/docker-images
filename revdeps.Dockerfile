@@ -42,4 +42,4 @@ RUN tar zxf OpenBUGS-3.2.3.tar.gz && \
 RUN apt-get install -y qpdf pandoc
 RUN apt-get install -y libnode-dev
 RUN apt-get install -y coinor-symphony coinor-libsymphony-dev
-RUN apt-get install nano
+RUN apt-get install nano libpoppler-cpp-dev
