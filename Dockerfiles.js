@@ -29,7 +29,7 @@ dockerfile_specs = {
   },
   "r-devel.Dockerfile" : {
     tag: "andrjohns/r-devel",
-    platforms : "linux/amd64"
+    platforms : "linux/amd64,linux/arm64"
   }
 };
 
