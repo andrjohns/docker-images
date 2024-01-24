@@ -44,3 +44,4 @@ RUN apt-get install -y libnode-dev
 RUN apt-get install -y coinor-symphony coinor-libsymphony-dev
 RUN apt-get install -y nano libpoppler-cpp-dev
 RUN apt-get install -y libxslt1-dev
+RUN apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
