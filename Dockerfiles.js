@@ -30,6 +30,10 @@ dockerfile_specs = {
   "r-devel.Dockerfile" : {
     tag: "andrjohns/r-devel",
     platforms : "linux/amd64,linux/arm64"
+  },
+  "quickjsr-cross-tests.Dockerfile" : {
+    tag: "andrjohns/quickjsr-cross-tests",
+    platforms : "linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/mips64le,linux/ppc64le,linux/riscv64,linux/s390x"
   }
 };
 
