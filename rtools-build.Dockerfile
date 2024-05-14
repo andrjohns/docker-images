@@ -22,7 +22,6 @@ RUN apt-get install -y \
       git \
       gperf \
       intltool \
-      libc6-dev-amd64-cross \
       libgdk-pixbuf2.0-dev \
       libltdl-dev \
       libgl-dev \
@@ -49,11 +48,11 @@ RUN apt-get install -y \
       xz-utils
 
 RUN if [ $(dpkg --print-architecture) = "arm64" ]; then \
-    apt-get install -y g++-multilib-x86-64-linux-gnu; \
+    apt-get install -y g++-multilib-x86-64-linux-gnu libc6-dev-amd64-cross; \
     fi
 
 RUN if [ $(dpkg --print-architecture) = "amd64" ]; then \
-    apt-get install -y g++-multilib; \
+    apt-get install -y g++-multilib libc6-dev-i386; \
     fi
 
     # texinfo for binutils
