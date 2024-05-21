@@ -44,7 +44,8 @@ RUN ./emsdk install "${EMSCRIPTEN_VERSION}" && \
 
 # Build LLVM flang
 RUN wget https://raw.githubusercontent.com/r-wasm/flang-wasm/main/Makefile && \
-  && mkdir -p /root/flang-wasm && mv Makefile /root/flang-wasm/Makefile
+  mkdir -p /root/flang-wasm && \
+  mv Makefile /root/flang-wasm/Makefile
 
 RUN . /opt/emsdk/emsdk_env.sh && \
     cd /root/flang-wasm && \
