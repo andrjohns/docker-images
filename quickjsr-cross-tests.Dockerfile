@@ -36,5 +36,4 @@ RUN mkdir -p /root/.R
 RUN echo "CC=clang-18" >> /root/.R/Makevars
 RUN echo "CXX=clang++-18" >> /root/.R/Makevars
 
-
 RUN Rscript -e 'install.packages(c("tinytest", "jsonlite"), repos="https://cloud.r-project.org", dependencies="Imports")'
