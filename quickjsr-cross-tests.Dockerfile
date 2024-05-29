@@ -15,7 +15,8 @@ ENV CXX=clang++
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen en_US.UTF-8
 
-RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
-RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 100
+RUN mkdir -p /root/.R
+RUN echo "CC=clang" >> /root/.R/Makevars
+RUN echo "CXX=clang++" >> /root/.R/Makevars
 
 RUN Rscript -e 'install.packages(c("tinytest", "jsonlite"), repos="https://cloud.r-project.org", dependencies="Imports")'
