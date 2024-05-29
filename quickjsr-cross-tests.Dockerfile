@@ -6,12 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN mkdir -p /etc/apt
+RUN apt-get update && apt-get install -y clang-18 flang-18 locales curl
 RUN echo 'deb-src http://deb.debian.org/debian sid main' >> /etc/apt/sources.list
 RUN apt-get update && apt-get build-dep -y r-base
-
-RUN apt-get update && apt-get install -y lsb-release wget software-properties-common gnupg
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-RUN apt-get install -y flang-18 locales curl
 
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-18 100
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-18 100
