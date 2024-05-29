@@ -9,6 +9,9 @@ RUN apt-get update && \
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 100
 
+ENV CC=clang
+ENV CXX=clang++
+
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen en_US.UTF-8
 
