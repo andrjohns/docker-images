@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN mkdir -p /etc/apt
-RUN apt-get update && apt-get install -y clang-18 r-base-dev locales pandoc
+RUN apt-get update && apt-get install -y clang-18 r-base-core locales pandoc
 
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-18 100
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-18 100
@@ -17,4 +17,4 @@ RUN locale-gen en_US.UTF-8
 RUN echo "CC=clang-18" >> /etc/R/Makeconf
 RUN echo "CXX=clang++-18" >> /etc/R/Makeconf
 
-RUN Rscript -e 'install.packages(c("tinytest", "jsonlite"), repos="https://cloud.r-project.org", dependencies="Imports")'
+RUN Rscript -e 'install.packages("tinytest", repos="https://cloud.r-project.org", dependencies="Imports")'
