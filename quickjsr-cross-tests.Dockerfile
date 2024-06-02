@@ -14,4 +14,6 @@ ENV CXX=clang++-18
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen en_US.UTF-8
 
+RUN echo "CPPFLAGS += -w" >> /etc/R/Makeconf
+
 RUN Rscript -e 'install.packages(c("tinytest","knitr","rmarkdown"), repos="https://cloud.r-project.org", dependencies="Imports")'
