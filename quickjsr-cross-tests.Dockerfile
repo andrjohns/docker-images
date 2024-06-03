@@ -16,6 +16,5 @@ RUN locale-gen en_US.UTF-8
 
 RUN echo "CPPFLAGS += -w" >> /etc/R/Makeconf
 
-RUN Rscript -e 'install.packages(c("tinytest","knitr","rmarkdown"), repos="https://cloud.r-project.org", dependencies="Imports")'
+RUN Rscript -e 'install.packages("tinytest", repos="https://cloud.r-project.org", dependencies="Imports")'
 
-RUN apt-get update && apt-get install -y qpdf
