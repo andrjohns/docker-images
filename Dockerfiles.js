@@ -1,84 +1,94 @@
-dockerfile_specs = {
-  "revdeps.Dockerfile" : {
+dockerfile_specs = [
+  {
+    file: "revdeps.Dockerfile",
     tag: "andrjohns/revdeps",
     platforms : "linux/amd64,linux/arm64"
   },
-  "stan-triton.Dockerfile" : {
+  {
+    file: "stan-triton.Dockerfile",
     tag: "andrjohns/stan-triton",
     platforms : "linux/amd64"
   },
-  "sem.Dockerfile" : {
+  {
+    file: "sem.Dockerfile",
     tag: "andrjohns/sem",
     platforms : "linux/amd64,linux/arm64"
   },
-  "opencl-triton.Dockerfile" : {
+  {
+    file: "opencl-triton.Dockerfile",
     tag: "andrjohns/opencl-triton",
     platforms : "linux/amd64"
   },
-  "opencl-triton-amd.Dockerfile" : {
+  {
+    file: "opencl-triton-amd.Dockerfile",
     tag: "andrjohns/opencl-triton-amd",
     platforms : "linux/amd64"
   },
-  "vulkan-triton.Dockerfile" : {
+  {
+    file: "vulkan-triton.Dockerfile",
     tag: "andrjohns/vulkan-triton",
     platforms : "linux/amd64"
   },
-  "rtools-build.Dockerfile" : {
+  {
+    file: "rtools-build.Dockerfile",
     tag: "andrjohns/rtools-build",
     platforms : "linux/amd64,linux/arm64"
   },
-  "r-devel.Dockerfile" : {
+  {
+    file: "r-devel.Dockerfile",
     tag: "andrjohns/r-devel",
     platforms : "linux/amd64,linux/arm64"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-386",
     platforms : "linux/386"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-armel",
     platforms : "linux/arm/v5"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-armhf",
     platforms : "linux/arm/v7"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-mips64le",
     platforms : "linux/mips64le"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-ppc64le",
     platforms : "linux/ppc64le"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-riscv64",
     platforms : "linux/riscv64"
   },
-  "quickjsr-cross-tests.Dockerfile" : {
+  {
+    file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-s390x",
     platforms : "linux/s390x"
   },
-  "flang-wasm.Dockerfile" : {
+  {
+    file: "flang-wasm.Dockerfile",
     tag: "andrjohns/flang-wasm",
     platforms : "linux/amd64,linux/arm64"
   },
-  "webr-build.Dockerfile" : {
+  {
+    file: "webr-build.Dockerfile",
     tag: "andrjohns/webr-build",
     platforms : "linux/amd64,linux/arm64"
   }
-};
+];
 
 const build_args_matrix = function(dockerfile_list) {
   return {
-    "include" : dockerfile_list.map(dockerfile => {
-                                      return {
-                                        file : dockerfile,
-                                        tag : dockerfile_specs[dockerfile].tag,
-                                        build_args : dockerfile_specs[dockerfile].build_args,
-                                        platforms : dockerfile_specs[dockerfile].platforms
-                                      }
-                                    })
+    "include" : dockerfile_list.map(dockerfile => dockerfile_specs.filter(spec => spec.file === dockerfile))
   }
 }
 
