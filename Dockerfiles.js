@@ -88,7 +88,7 @@ dockerfile_specs = [
 
 const build_args_matrix = function(dockerfile_list) {
   return {
-    "include" : dockerfile_list.map(dockerfile => dockerfile_specs.filter(spec => spec.file === dockerfile))
+    "include" : dockerfile_list.map(dockerfile => dockerfile_specs.filter(spec => spec.file === dockerfile)).flat(Infinity)
   }
 }
 
