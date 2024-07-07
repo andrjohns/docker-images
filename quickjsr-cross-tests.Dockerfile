@@ -9,4 +9,5 @@ RUN locale-gen en_US.UTF-8
 
 RUN Rscript -e 'install.packages(c("tinytest", "rmarkdown", "knitr"), \
                   repos="https://cloud.r-project.org", \
+                  Ncpus=4, \
                   dependencies="Imports")'
