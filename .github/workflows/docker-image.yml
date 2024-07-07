@@ -46,7 +46,7 @@ jobs:
       matrix: ${{ steps.generator.outputs.result }}
 
   build-and-push-images:
-    name: Build and Push ${{ matrix.file }}
+    name: Build and Push ${{ matrix.tag }}
     if: ${{ fromJson(needs.get-changed-dockerfiles.outputs.matrix) }}
     needs:
       - get-changed-dockerfiles
