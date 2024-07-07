@@ -11,3 +11,8 @@ RUN Rscript -e 'install.packages(c("tinytest", "rmarkdown", "knitr"), \
                   repos="https://cloud.r-project.org", \
                   Ncpus=4, \
                   dependencies="Imports")'
+
+RUN Rscript -e 'install.packages(c("rcmdcheck"), \
+                  repos="https://cloud.r-project.org", \
+                  Ncpus=4, \
+                  dependencies="Imports")'
