@@ -12,6 +12,7 @@ RUN Rscript -e 'install.packages(c("tinytest", "rmarkdown", "knitr"), \
                   Ncpus=4, \
                   dependencies="Imports")'
 
+RUN apt-get install -y libssl-dev libcurl4-openssl-dev libxml2-dev libssh-dev
 RUN Rscript -e 'install.packages(c("rcmdcheck"), \
                   repos="https://cloud.r-project.org", \
                   Ncpus=4, \
