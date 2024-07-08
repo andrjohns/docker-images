@@ -41,38 +41,8 @@ dockerfile_specs = [
   },
   {
     file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-386",
-    platforms : "linux/386"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-armel",
-    platforms : "linux/arm/v5"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-armhf",
-    platforms : "linux/arm/v7"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-mips64le",
-    platforms : "linux/mips64le"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-ppc64le",
-    platforms : "linux/ppc64le"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-riscv64",
-    platforms : "linux/riscv64"
-  },
-  {
-    file: "quickjsr-cross-tests.Dockerfile",
-    tag: "andrjohns/quickjsr-cross-s390x",
-    platforms : "linux/s390x"
+    tag: "andrjohns/quickjsr-cross-tests",
+    platforms : "linux/386,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/riscv64,linux/s390x"
   },
   {
     file: "flang-wasm.Dockerfile",
