@@ -17,3 +17,5 @@ RUN Rscript -e 'install.packages(c("rcmdcheck"), \
                   repos="https://cloud.r-project.org", \
                   Ncpus=4, \
                   dependencies="Imports")'
+
+                  RUN apt-get update && apt-get install -y g++-14
