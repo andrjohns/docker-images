@@ -42,7 +42,7 @@ dockerfile_specs = [
   {
     file: "quickjsr-cross-tests.Dockerfile",
     tag: "andrjohns/quickjsr-cross-tests",
-    platforms : "linux/386,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/riscv64,linux/s390x"
+    platforms : "linux/386,linux/arm64,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/riscv64,linux/s390x"
   },
   {
     file: "flang-wasm.Dockerfile",
