@@ -12,7 +12,7 @@ dockerfile_specs = [
   {
     file: "sem.Dockerfile",
     tag: "andrjohns/sem",
-    platforms : "linux/amd64,linux/arm64"
+    platforms : "linux/amd64"
   },
   {
     file: "opencl-triton.Dockerfile",

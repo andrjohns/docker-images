@@ -2,9 +2,7 @@ FROM debian:sid-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
-RUN dpkg --add-architecture amd64
-RUN apt-get update && \
-  apt-get install -y libc6:amd64 qemu-user binfmt-support apt-utils tzdata locales
+RUN apt-get update && apt-get install -y tzdata locales
 
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_AU.UTF-8" >> /etc/environment
@@ -21,6 +19,6 @@ ENV LC_MEASUREMENT="en_AU.UTF-8"
 ENV LC_COLLATE="en_AU.UTF-8"
 ENV LC_ALL="en_AU.UTF-8"
 
-COPY ./810_ComboLinux64.bin ./
-RUN bash -x ./810_ComboLinux64.bin -i silent && rm ./810_ComboLinux64.bin
-RUN ln -s /opt/mplus/8.10/mplus /usr/bin/mplus
+COPY ./ComboLinux64.bin ./
+RUN bash -x ./ComboLinux64.bin -i silent && rm ./ComboLinux64.bin
+RUN ln -s /opt/mplus/*/mplus /usr/bin/mplus

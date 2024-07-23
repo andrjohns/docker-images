@@ -69,8 +69,8 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Download build files
-      if: ${{ matrix.tag }} == 'andrjohns/sem'
-      run: wget ${{ secrets.MPLUS_DOWNLOAD_URL }}
+      if: matrix.tag == 'andrjohns/sem'
+      run: wget "${{ secrets.MPLUS_DOWNLOAD_URL }}" -O ComboLinux64.bin
 
     - uses: docker/build-push-action@v4
       with:
