@@ -22,6 +22,7 @@ ENV LC_ALL="en_US.UTF-8"
 ENV _R_CHECK_FORCE_SUGGESTS_=false
 ENV _R_CHECK_CRAN_INCOMING_=false
 ENV _R_CHECK_CRAN_INCOMING_REMOTE_=false
+ENV _R_CHECK_SYSTEM_CLOCK_=0
 
 RUN apt-get update && apt-get install -y gdb \
     r-base-dev libcurl4-openssl-dev libssh-dev \
