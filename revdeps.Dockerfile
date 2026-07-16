@@ -1,8 +1,8 @@
-FROM ubuntu:24.04
+FROM debian:13
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
-RUN apt-get update && apt-get install -y apt-utils wget software-properties-common dirmngr
+RUN apt-get update && apt-get install -y apt-utils
 RUN apt-get install -y tzdata locales
 RUN dpkg-reconfigure locales
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment
@@ -23,10 +23,6 @@ ENV _R_CHECK_FORCE_SUGGESTS_=false
 ENV _R_CHECK_CRAN_INCOMING_=false
 ENV _R_CHECK_CRAN_INCOMING_REMOTE_=false
 
-RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# add the repo from CRAN -- lsb_release adjusts to 'noble' or 'jammy' or ... as needed
-RUN add-apt-repository -y "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-
 RUN apt-get update && apt-get install -y gdb \
     r-base-dev libcurl4-openssl-dev libssh-dev \
     make pandoc libssl-dev zlib1g-dev pari-gp cmake \
@@ -45,7 +41,7 @@ RUN mkdir -p ~/.R
 RUN echo "CXXFLAGS += -w" >> ~/.R/Makevars && \
     echo "CXX17FLAGS += -w" >> ~/.R/Makevars
 
-RUN echo "options(repos = c(CRAN = sprintf('https://packagemanager.posit.co/cran/latest/bin/linux/noble-%s/%s', R.version['arch'], substr(getRversion(), 1, 3))))" >> ~/.Rprofile
+RUN echo "options(repos = c(CRAN = sprintf('https://packagemanager.posit.co/cran/latest/bin/linux/trixie-%s/%s', R.version['arch'], substr(getRversion(), 1, 3))))" >> ~/.Rprofile
 RUN echo "options(repos = c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'))" >> ~/.Rprofile
 
 RUN Rscript -e "                                \
